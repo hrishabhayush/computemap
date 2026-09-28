@@ -40,3 +40,11 @@ materials:{position:[13,.4,-10],width:7,parent:'fab',parts:[]},
 };
 export function ancestry(id:ComponentId):ComponentId[]{const result:ComponentId[]=[];let current:ComponentId|undefined=id;while(current){result.unshift(current);current=focus[current].parent}return result}
 export function inBranch(id:ComponentId,root:ComponentId){return ancestry(id).includes(root)}
+// Station anchors. SPREAD pushes each station away from the origin by anchor*(SPREAD-1) without resizing it.
+export const SPREAD=1.4;
+type V=[number,number,number];
+export const A={laptop:[-11,0,0],network:[-4.8,0,6],cellular:[-10.7,0,6.5],datacenter:[0,0,-1],server:[12,0,0],power:[-4.5,0,-11],cooling:[4.8,0,-11],fab:[13,0,-10]} satisfies Record<string,V>;
+// Shift a point with station a's offset. Pass az to take the z offset from a second station, which keeps bends in orthogonal connectors square.
+export function at(a:V,p:V,az:V=a):V{const k=SPREAD-1;return [p[0]+a[0]*k,p[1],p[2]+az[2]*k]}
+const station:Partial<Record<ComponentId,V>>={...A,radio:A.laptop,wifi:A.laptop};
+export function spread(id:ComponentId,p:V=focus[id].position){return at(ancestry(id).reverse().map(a=>station[a]).find(Boolean)!,p)}
