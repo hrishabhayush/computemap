@@ -1,0 +1,42 @@
+import type {ComponentId} from './graph.ts';
+export type Focus={position:[number,number,number];width:number;parent?:ComponentId;parts:ComponentId[]};
+// Positions point into the existing world; navigation never replaces a scene.
+export const focus:Record<ComponentId,Focus>={
+laptop:{position:[-11,.6,0],width:11,parts:['display','keyboard','phone','network']},
+display:{position:[-11.5,1.6,-1],width:5,parent:'laptop',parts:[]},
+keyboard:{position:[-11.5,.3,.4],width:5,parent:'laptop',parts:[]},
+phone:{position:[-14,.2,1.35],width:4,parent:'laptop',parts:[]},
+network:{position:[-6,.7,4],width:16,parts:['radio','wifi','ont','fiber','isp','cellular']},
+radio:{position:[-9.8,.8,-.2],width:6,parent:'network',parts:[]},
+wifi:{position:[-8.35,.6,-.3],width:5,parent:'network',parts:[]},
+ont:{position:[-7.5,.5,6],width:5,parent:'network',parts:[]},
+fiber:{position:[-4.8,.4,6],width:6,parent:'network',parts:[]},
+isp:{position:[-1.8,1,6],width:5,parent:'network',parts:[]},
+cellular:{position:[-10.7,1.4,6.5],width:6,parent:'network',parts:[]},
+datacenter:{position:[0,1,-1],width:14,parts:['rack','nic','power','cooling']},
+rack:{position:[-.328,1.4,-.55],width:5,parent:'datacenter',parts:['server']},
+server:{position:[12,.7,0],width:12,parent:'rack',parts:['gpu','cpu','nic','storage','psu','fans']},
+gpu:{position:[12.72,1.75,.765],width:4.5,parent:'server',parts:['die','hbm','substrate']},
+die:{position:[12.72,2.1,.765],width:2.4,parent:'gpu',parts:[]},
+hbm:{position:[12.72,2.1,.765],width:3,parent:'gpu',parts:[]},
+substrate:{position:[12.72,1.9,.765],width:3,parent:'gpu',parts:[]},
+cpu:{position:[10.3,1,-1.665],width:4.5,parent:'server',parts:[]},
+nic:{position:[13.08,1,-1.665],width:4.5,parent:'server',parts:[]},
+storage:{position:[15.85,.9,.9],width:4,parent:'server',parts:[]},
+psu:{position:[8.2,.9,.9],width:4,parent:'server',parts:[]},
+fans:{position:[12,.5,1.845],width:7,parent:'server',parts:[]},
+power:{position:[-4.5,1,-11],width:10,parts:['transformer','switchgear','ups']},
+transformer:{position:[-6.3,1,-11],width:4,parent:'power',parts:[]},
+switchgear:{position:[-4.25,1,-11],width:4,parent:'power',parts:[]},
+ups:{position:[-2.25,1,-11],width:4,parent:'power',parts:[]},
+cooling:{position:[4.8,.8,-11],width:10,parts:['heat-exchanger','tank','pump']},
+'heat-exchanger':{position:[3.8,1,-11],width:5,parent:'cooling',parts:[]},
+tank:{position:[6.4,1,-11],width:4,parent:'cooling',parts:[]},
+pump:{position:[7.5,.6,-11],width:4,parent:'cooling',parts:[]},
+fab:{position:[13,.5,-10],width:8,parts:['wafer','package','materials']},
+wafer:{position:[13,.2,-10],width:5,parent:'fab',parts:[]},
+package:{position:[13,1,-8.25],width:3,parent:'fab',parts:[]},
+materials:{position:[13,.4,-10],width:7,parent:'fab',parts:[]},
+};
+export function ancestry(id:ComponentId):ComponentId[]{const result:ComponentId[]=[];let current:ComponentId|undefined=id;while(current){result.unshift(current);current=focus[current].parent}return result}
+export function inBranch(id:ComponentId,root:ComponentId){return ancestry(id).includes(root)}
