@@ -15,3 +15,34 @@
 .world-labels{position:absolute;inset:0;pointer-events:none;z-index:5}.world-labels .object-label{pointer-events:auto}
 
 .spatial-caption .makers{font-size:12px;color:#6f8973}.spatial-caption .makers strong{font-weight:600;color:#087c5c}
+
+/* Soft studio look: warm daylight backdrop, glass panels, pill controls. */
+:root{--green:#0a7d5c;--glass:#ffffffb8;--ring:#0000000f;--lift:0 1px 2px #0000000d,0 8px 24px -6px #2a24181f;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}
+body{background:#f4f2ec}.topbar,.command-dock{background:#fbfaf7cc;backdrop-filter:blur(14px);border-color:#e6e2d9}.footnote{background:#f4f2ec}
+.spatial-app .world{background:radial-gradient(120% 90% at 50% 0%,#fdfcf9 0%,#f1eee6 55%,#e7e2d6 100%)}
+.object-label,.edition,.footnote,.scene-key,.breadcrumbs,.inspector-top,.count,.simulation{font-family:inherit}
+.object-label{border-radius:999px;border:1px solid var(--ring);background:var(--glass);backdrop-filter:blur(10px);box-shadow:var(--lift);padding:6px 12px 6px 10px;font-size:12px;font-weight:500;color:#2c3a33;letter-spacing:0;gap:8px;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,background .2s}
+.object-label::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px #0a7d5c22;animation:pulse 2.4s ease-in-out infinite}
+.object-label:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 2px 4px #0000000f,0 14px 30px -8px #2a241833;background:#fff;color:var(--green)}
+.object-label.active{background:var(--green);color:#fff;border-color:transparent}.object-label.active::before{background:#fff}.object-label.active span{color:#fff}
+.hover-tip{pointer-events:none;white-space:nowrap;font-size:11px;font-weight:500;color:#fff;background:#1d2723e6;padding:5px 10px;border-radius:8px;box-shadow:var(--lift);transform:translateY(-6px);animation:tip .18s ease-out}
+@keyframes tip{from{opacity:0;transform:translateY(0)}}@keyframes pulse{50%{box-shadow:0 0 0 6px #0a7d5c00}}
+.scene-tools button,.mode-switch,.quick-explore button,form,.spatial-caption,.journey-panel,.parts-rail button{border-radius:12px}
+.scene-tools button{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--ring);box-shadow:var(--lift);transition:transform .2s,box-shadow .2s}.scene-tools button:hover{transform:translateY(-1px);box-shadow:0 2px 4px #0000000f,0 12px 26px -8px #2a241833}
+.mode-switch{background:#efece4;padding:4px;border-radius:12px}.mode-switch button{border-radius:9px}.mode-switch button.chosen{background:#fff;color:var(--green);box-shadow:var(--lift)}
+.spatial-caption,.journey-panel{background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--ring);box-shadow:var(--lift);padding:14px 18px}
+form{background:#fff;border:1px solid #e3dfd5;box-shadow:var(--lift);border-radius:14px;transition:box-shadow .2s,border-color .2s}form:focus-within{border-color:#0a7d5c66;box-shadow:0 0 0 4px #0a7d5c14,var(--lift)}.send{border-radius:10px}
+.quick-explore button{background:#fff;border:1px solid #e6e2d9;box-shadow:0 1px 2px #0000000a;transition:transform .2s,box-shadow .2s}.quick-explore button:hover{background:#fff;transform:translateY(-2px);box-shadow:var(--lift)}
+.parts-rail button{background:#ffffff8c;backdrop-filter:blur(8px);padding:7px 11px;border:1px solid transparent;transition:background .2s,transform .2s}.parts-rail button:hover{background:#fff;transform:translateX(3px)}.parts-rail .active{background:#fff;border-color:var(--ring)}
+.scene-heading h1{letter-spacing:-.03em;font-weight:600;color:#1f2b25}
+@media(prefers-reduced-motion:reduce){.object-label::before{animation:none}}
+.eyebrow,.section-label,.brand-caption{font-family:'SF Mono',ui-monospace,Menlo,monospace;letter-spacing:.14em}
+.spatial-app .scene-heading{background:#fbfaf7b3;backdrop-filter:blur(14px);border:1px solid var(--ring);border-radius:16px;padding:14px 18px;box-shadow:var(--lift);max-width:400px}.spatial-app .scene-heading p{margin-bottom:0}.spatial-app .scene-heading h1{margin:8px 0 6px}.spatial-app .breadcrumbs{margin-bottom:12px}.parts-rail{top:230px}
+/* Map-only layout: full-screen clay world, labels, and a few icon buttons. */
+.map-only{position:fixed;inset:0;background:radial-gradient(120% 90% at 50% 0%,#fcf8f1 0%,#f3eadc 60%,#eadfcd 100%)}
+.map-tools{position:absolute;top:20px;right:20px;display:flex;gap:8px;z-index:10}
+.map-tools button{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#ffffffc7;backdrop-filter:blur(10px);border:1px solid #0000000f;color:#3b4a42;box-shadow:0 1px 2px #0000000d,0 8px 24px -6px #2a24181f;transition:transform .2s,color .2s}
+.map-tools button:hover{transform:translateY(-1px);color:#0a7d5c}.map-tools .tool-active{color:#0a7d5c}
+.object-label{font-size:13px;font-weight:600;padding:7px 14px 7px 12px}
+.object-label::before{background:var(--dot,#0a7d5c);box-shadow:0 0 0 3px color-mix(in srgb,var(--dot,#0a7d5c) 18%,transparent)}
+.anchor-dot{display:block;width:9px;height:9px;border-radius:50%;background:#fff;border:2.5px solid var(--dot,#0a7d5c);box-sizing:border-box}
