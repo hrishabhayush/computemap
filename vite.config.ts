@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-export default defineConfig({plugins:[react(),tailwindcss()]});
+// Relative base so the build works under /computemap/ on GitHub Pages.
+export default defineConfig({base:'./',plugins:[react(),tailwindcss()]});

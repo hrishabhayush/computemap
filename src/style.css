@@ -13,3 +13,36 @@
 .spatial-app .workspace{display:block;grid-template-columns:none;height:calc(100dvh - 225px);min-height:600px}.spatial-app .world{height:100%;width:100%}.spatial-app .scene-heading{max-width:min(560px,65vw)}.spatial-app .breadcrumbs{flex-wrap:wrap;row-gap:8px;max-width:80vw}.crumb{display:inline-flex;gap:8px;align-items:center}.breadcrumbs button[aria-current]{color:#087c5c;font-weight:600}.spatial-caption{position:absolute;bottom:55px;left:25px;max-width:620px;display:flex;align-items:flex-start;gap:20px;background:#fffffff0;border-left:2px solid #087c5c;padding:12px 16px}.spatial-caption p{font-size:13px;line-height:1.55;color:#577061;margin:6px 0 0}.spatial-caption button{font-size:11px;color:#087c5c;border:0;background:none;white-space:nowrap;padding:4px}.spatial-caption .technical-text{font-size:12px;padding:0}.parts-rail{position:absolute;left:25px;top:190px;display:flex;flex-direction:column;gap:9px;max-width:175px}.parts-rail button{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:5px 0;background:#f8faf7c9;border:0;text-align:left;font-size:12px;color:#526e5c}.parts-rail .active{color:#087c5c;font-weight:600}.parts-rail .section-label{font-size:9px;margin-bottom:3px}.spatial-app .journey-panel{bottom:50px}.spatial-app .scene-tools{z-index:10}.spatial-app .scene-heading{z-index:6}.spatial-app .parts-rail{z-index:6}.spatial-app .spatial-caption{z-index:6}@media(max-width:760px){.spatial-app .workspace{height:65dvh;min-height:520px}.spatial-app .unified-heading h1{font-size:21px}.spatial-app .breadcrumbs{font-size:9px;max-width:70vw;gap:5px}.crumb{gap:4px}.parts-rail{top:auto;bottom:15px;left:14px;right:14px;max-width:none;flex-direction:row;flex-wrap:wrap;gap:5px}.parts-rail .section-label{display:none}.parts-rail button{padding:5px 7px;border:1px solid #cdd9cf;font-size:10px;background:#fffffff2}.spatial-caption{left:14px;right:14px;bottom:85px;padding:9px 11px;max-width:none;gap:7px}.spatial-caption p{font-size:11px}.spatial-app .scene-bottom{display:none}.spatial-caption .eyebrow{font-size:8px}}
 
 .world-labels{position:absolute;inset:0;pointer-events:none;z-index:5}.world-labels .object-label{pointer-events:auto}
+
+.spatial-caption .makers{font-size:12px;color:#6f8973}.spatial-caption .makers strong{font-weight:600;color:#087c5c}
+
+/* Soft studio look: warm daylight backdrop, glass panels, pill controls. */
+:root{--green:#0a7d5c;--glass:#ffffffb8;--ring:#0000000f;--lift:0 1px 2px #0000000d,0 8px 24px -6px #2a24181f;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}
+body{background:#f4f2ec}.topbar,.command-dock{background:#fbfaf7cc;backdrop-filter:blur(14px);border-color:#e6e2d9}.footnote{background:#f4f2ec}
+.spatial-app .world{background:radial-gradient(120% 90% at 50% 0%,#fdfcf9 0%,#f1eee6 55%,#e7e2d6 100%)}
+.object-label,.edition,.footnote,.scene-key,.breadcrumbs,.inspector-top,.count,.simulation{font-family:inherit}
+.object-label{border-radius:999px;border:1px solid var(--ring);background:var(--glass);backdrop-filter:blur(10px);box-shadow:var(--lift);padding:6px 12px 6px 10px;font-size:12px;font-weight:500;color:#2c3a33;letter-spacing:0;gap:8px;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,background .2s}
+.object-label::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px #0a7d5c22;animation:pulse 2.4s ease-in-out infinite}
+.object-label:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 2px 4px #0000000f,0 14px 30px -8px #2a241833;background:#fff;color:var(--green)}
+.object-label.active{background:var(--green);color:#fff;border-color:transparent}.object-label.active::before{background:#fff}.object-label.active span{color:#fff}
+.hover-tip{pointer-events:none;white-space:nowrap;font-size:11px;font-weight:500;color:#fff;background:#1d2723e6;padding:5px 10px;border-radius:8px;box-shadow:var(--lift);transform:translateY(-6px);animation:tip .18s ease-out}
+@keyframes tip{from{opacity:0;transform:translateY(0)}}@keyframes pulse{50%{box-shadow:0 0 0 6px #0a7d5c00}}
+.scene-tools button,.mode-switch,.quick-explore button,form,.spatial-caption,.journey-panel,.parts-rail button{border-radius:12px}
+.scene-tools button{background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--ring);box-shadow:var(--lift);transition:transform .2s,box-shadow .2s}.scene-tools button:hover{transform:translateY(-1px);box-shadow:0 2px 4px #0000000f,0 12px 26px -8px #2a241833}
+.mode-switch{background:#efece4;padding:4px;border-radius:12px}.mode-switch button{border-radius:9px}.mode-switch button.chosen{background:#fff;color:var(--green);box-shadow:var(--lift)}
+.spatial-caption,.journey-panel{background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--ring);box-shadow:var(--lift);padding:14px 18px}
+form{background:#fff;border:1px solid #e3dfd5;box-shadow:var(--lift);border-radius:14px;transition:box-shadow .2s,border-color .2s}form:focus-within{border-color:#0a7d5c66;box-shadow:0 0 0 4px #0a7d5c14,var(--lift)}.send{border-radius:10px}
+.quick-explore button{background:#fff;border:1px solid #e6e2d9;box-shadow:0 1px 2px #0000000a;transition:transform .2s,box-shadow .2s}.quick-explore button:hover{background:#fff;transform:translateY(-2px);box-shadow:var(--lift)}
+.parts-rail button{background:#ffffff8c;backdrop-filter:blur(8px);padding:7px 11px;border:1px solid transparent;transition:background .2s,transform .2s}.parts-rail button:hover{background:#fff;transform:translateX(3px)}.parts-rail .active{background:#fff;border-color:var(--ring)}
+.scene-heading h1{letter-spacing:-.03em;font-weight:600;color:#1f2b25}
+@media(prefers-reduced-motion:reduce){.object-label::before{animation:none}}
+.eyebrow,.section-label,.brand-caption{font-family:'SF Mono',ui-monospace,Menlo,monospace;letter-spacing:.14em}
+.spatial-app .scene-heading{background:#fbfaf7b3;backdrop-filter:blur(14px);border:1px solid var(--ring);border-radius:16px;padding:14px 18px;box-shadow:var(--lift);max-width:400px}.spatial-app .scene-heading p{margin-bottom:0}.spatial-app .scene-heading h1{margin:8px 0 6px}.spatial-app .breadcrumbs{margin-bottom:12px}.parts-rail{top:230px}
+/* Map-only layout: full-screen clay world, labels, and a few icon buttons. */
+.map-only{position:fixed;inset:0;background:radial-gradient(120% 90% at 50% 0%,#fcf8f1 0%,#f3eadc 60%,#eadfcd 100%)}
+.map-tools{position:absolute;top:20px;right:20px;display:flex;gap:8px;z-index:10}
+.map-tools button{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#ffffffc7;backdrop-filter:blur(10px);border:1px solid #0000000f;color:#3b4a42;box-shadow:0 1px 2px #0000000d,0 8px 24px -6px #2a24181f;transition:transform .2s,color .2s}
+.map-tools button:hover{transform:translateY(-1px);color:#0a7d5c}.map-tools .tool-active{color:#0a7d5c}
+.object-label{font-size:13px;font-weight:600;padding:7px 14px 7px 12px}
+.object-label::before{background:var(--dot,#0a7d5c);box-shadow:0 0 0 3px color-mix(in srgb,var(--dot,#0a7d5c) 18%,transparent)}
+.anchor-dot{display:block;width:9px;height:9px;border-radius:50%;background:#fff;border:2.5px solid var(--dot,#0a7d5c);box-sizing:border-box}
