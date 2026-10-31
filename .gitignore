@@ -2,3 +2,7 @@ node_modules/
 .sites-runtime/
 dist/
 .openai/
+# Local secrets written by `elevenlabs onboard`
+/.env.local
+/film/out/
+.DS_Store
