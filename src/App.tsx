@@ -8,7 +8,7 @@ class SceneBoundary extends Component<{children:ReactNode},{failed:boolean}>{sta
 // Just the world and its labels; small icon buttons are the only chrome.
 export default function App(){
 const [selected,setSelected]=useState<ComponentId>('laptop');const [overview,setOverview]=useState(true);const [exploded,setExploded]=useState(false);const [reset,setReset]=useState(0);
-const select=(id:ComponentId)=>{setSelected(id);setOverview(false);setReset(r=>r+1);if(inBranch(id,'server'))setExploded(true)};
+const select=(id:ComponentId)=>{setSelected(id);setOverview(false);if(inBranch(id,'server'))setExploded(true)};
 const showAll=()=>{setOverview(true);setReset(r=>r+1)};
 const back=()=>{const parent=focus[selected].parent;parent?select(parent):showAll()};
 useEffect(()=>{const onKey=(e:KeyboardEvent)=>{if(e.key==='Escape'&&!overview)back()};addEventListener('keydown',onKey);return()=>removeEventListener('keydown',onKey)});
